@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  quantumania:
+    image: quantumania
+    build:
+      context: .
+      dockerfile: ./quantumania/Dockerfile.quantumania
+    ports:
+      - 5002:5002
+    depends_on:
+      - db
+    networks:
+      - default
+      - internal
+      
+  nginx:
+    image: nginx:stable-alpine3.17-slim
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../frontend/dist:/usr/share/nginx/html
+    depends_on:
+      - quantumania
+
+
+  db:
+    image: mariadb:10.4.12
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=quantumania
+      - MYSQL_USER=quantumania
+      - MYSQL_PASSWORD=quantumania
+      - MYSQL_DATABASE=quantumania
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      - internal
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]
+
+networks:
+  default:
+  internal:
+    internal: true
