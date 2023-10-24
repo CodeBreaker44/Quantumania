@@ -10,3 +10,8 @@
 body{
     background-color: #000;
 }
+
+.highlighted-text {
+    background-color: yellow;
+    display: inline; /* This ensures the element remains inline */
+}
