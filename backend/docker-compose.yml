@@ -3,13 +3,11 @@ version: '3.4'
 services:
   quantumania:
     image: silvercryptor/quantumania
-    build:
     ports:
       - 5002:5002
     depends_on:
       - db
     networks:
-      - default
       - internal
       
   nginx:
