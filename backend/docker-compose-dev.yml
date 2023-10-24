@@ -2,8 +2,10 @@ version: '3.4'
 
 services:
   quantumania:
-    image: silvercryptor/quantumania
+    image: quantumania
     build:
+      context: .
+      dockerfile: ./quantumania/Dockerfile.quantumania
     ports:
       - 5002:5002
     depends_on:
@@ -13,11 +15,12 @@ services:
       - internal
       
   nginx:
-    image: silvercryptor/quantumania-nginx
+    image: nginx:stable-alpine3.17-slim
     ports:
       - 80:80
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../frontend/dist:/usr/share/nginx/html
     depends_on:
       - quantumania
 
