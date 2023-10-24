@@ -32,7 +32,7 @@ services:
       - MYSQL_USER=quantumania
       - MYSQL_PASSWORD=quantumania
       - MYSQL_DATABASE=quantumania
-    volimes:
+    volumes:
       - ./db:/var/lib/mysql
     networks:
       - internal
