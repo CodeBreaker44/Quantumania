@@ -1,0 +1,12 @@
+.navbar-toggler {
+    font-size: 1.25rem;
+    line-height: 1;
+    /*background-color: transparent;*/
+    background-color:#000;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+body{
+    background-color: #000;
+}
