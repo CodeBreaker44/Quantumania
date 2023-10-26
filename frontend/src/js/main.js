@@ -27,7 +27,11 @@ function performSearch() {
     console.log("Word:", word); 
 
     if (!word) {
-       window.alert("Please enter a search term");
+       Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter a serach term',
+          }) 
        return;
     }
 
