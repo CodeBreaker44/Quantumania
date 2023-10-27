@@ -1,6 +1,8 @@
-FROM nginx:stable-alpine3.17-slim
+FROM openquantumsafe/nginx
 
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx/nginx.conf /opt/nginx/nginx-conf/nginx.conf
 
 # get front-end from releases
-RUN wget
+RUN wget https://github.com/CodeBreaker44/Quantumania/releases/tag/1.0.0 -O /tmp/quantumania.zip && \
+    unzip /tmp/quantumania.zip -d /opt/nginx/html
+
