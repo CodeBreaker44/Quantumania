@@ -19,6 +19,25 @@ document.addEventListener("DOMContentLoaded", function() {
 let currentHighlightIndex = 0;
 let matchingRanges = [];
 let lastSearchedWord = null;
+$(document).ready(function() {
+    $(document).scroll(function() {
+        let $nav = $("#navigation");
+        let scrollPosition = $(this).scrollTop();
+        let navHeight = $nav.height();
+
+        console.log("Scroll Position:", scrollPosition);
+        console.log("Navbar Height:", navHeight);
+
+        if (scrollPosition > navHeight) {
+            $nav.addClass('scrolled');
+            console.log("Scrolled class added!");
+        } else {
+            $nav.removeClass('scrolled');
+            console.log("Scrolled class removed!");
+        }
+    });
+});
+
 
 function performSearch() {
     clearHighlight();

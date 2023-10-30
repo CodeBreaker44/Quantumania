@@ -2,16 +2,35 @@
     font-size: 1.25rem;
     line-height: 1;
     /*background-color: transparent;*/
-    background-color:#000;
+    background-color: #000;
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
 
-body{
+body {
     background-color: #000;
 }
 
 .highlighted-text {
     background-color: yellow;
-    display: inline; /* This ensures the element remains inline */
+    display: inline;
+    /* This ensures the element remains inline */
 }
+
+
+#navigation {
+    transition: background-color 200ms linear;
+}
+
+#navigation.scrolled {
+    background-color: #71C9CE !important;
+    transition: background-color 200ms linear;
+}
+
+
+.test {
+    background-color: aliceblue;
+}
+
+.nav-colored { background-color:#000; }
+.nav-transparent { background-color:transparent;}
