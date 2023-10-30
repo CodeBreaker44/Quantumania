@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" href="../css/styles.css"> -->
     <link href="https://fonts.cdnfonts.com/css/quantum-2">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Quantumania</title>
-  <script type="module" crossorigin src="/assets/index-f543b536.js"></script>
-  <link rel="stylesheet" href="/assets/index-638cde7d.css">
+  <script type="module" crossorigin src="/assets/index-ffad40e2.js"></script>
+  <link rel="stylesheet" href="/assets/index-6bad0096.css">
 </head>
 
 <style>
@@ -19,7 +20,7 @@
 
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background-color: #3F72AF; ">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background-color: #3F72AF; " id="navigation">
         <div class="container-fluid">
             <a class="navbar-brand" style=" font-family: Quantum ,sans-serif; font-size: 45px;" href="#">Quantumania</a>
             <img src="">
@@ -31,10 +32,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-left: 50px; padding-top: 22px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#" style="font-size: 1.2rem;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active " href="#">About</a>
+                        <a class="nav-link active " href="#about" style="font-size: 1.2rem;">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " href="#algo" style="font-size: 1.2rem;">Algorithm</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -54,10 +58,10 @@
                         <a class="nav-link disabled">Disabled</a>
                     </li> -->
                 </ul>
-                <form class="d-flex" role="search" onsubmit="event.preventDefault(); executeSearch();">
+                <form class="d-flex" role="search" onsubmit="event.preventDefault(); performSearch();">
                     <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-warning" type="submit">Search</button>
-                </form>                
+                </form>
             </div>
         </div>
     </nav>
@@ -72,10 +76,10 @@
         </div> -->
         <div class="carousel-inner ">
             <div class="carousel-item active">
-                <img src="../images/DALL·E 2023-10-22 19.57.36.png" class="d-block w-100 p-5 rounded" alt="..."
+                <img src="/assets/DALL·E 2023-10-30 12.10.06-f915df2e.png" class="d-block w-100 " alt="..."
                     style="border-radius: 30px;">
                 <div class="carousel-caption d-none d-md-block ">
-                    <h1 style="font-family: Quantum; ">Welcome to Post-Quantum Cryptography</h5>
+                    <h1 style="font-family: Quantum; color: #76d7ea;">Welcome to Post-Quantum Cryptography</h5>
                         <p>Some representative placeholder.</p>
                 </div>
             </div>
@@ -107,21 +111,41 @@
             <span class="visually-hidden">Next</span>
         </button> -->
     </div>
-    <div class="container" style="background: azure; color: black; border-radius: 10px;">
+    <br>
+    <br>
+    <div class="container-fluid" style=" color: white; border-radius: 10px; width: 90%; height: 100%;">
         <h1 id="about">About <span style="font-family: Quantum;"> Quantumania</span></h1>
-        <p style="font-size: 20px;">In the dynamic world of quantum computing, the cloud emerges as a powerful ally,
-            offering scalability,
-            flexibility, and unprecedented computational power. Quantumania, harnessing the prowess of AWS's cloud
-            infrastructure, stands as a beacon in this transformative age. Specifically optimized for the AWS EC2 F1
-            FPGA instance, our platform provides an accelerated and robust environment tailored for quantum simulations,
-            algorithms, and cryptographic solutions. This isn't merely a theoretical endeavor; at Quantumania, we've
-            made it practical and accessible. Dive deep into quantum mechanics, run intricate simulations, or explore
-            post-quantum cryptographic landscapes, all with the scalable power of FPGAs on the cloud. Whether you're a
-            quantum researcher, a cryptographic enthusiast, or someone eager to understand the quantum-cloud synergy,
-            Quantumania is your portal. Join us in this cloud-powered quantum odyssey and shape the future of quantum
-            computing and cryptography.</p>
+        <p style="font-size: 17px;">In the dynamic world of quantum computing, the cloud emerges as a powerful ally,
+            Welcome to Quantumania, where we're dedicated to the future of encryption. Discover the potential of
+            post-quantum security through NTRUEncrypt, a robust lattice-based quantum-resistant cryptosystem. Our
+            project, supported by AWS cloud infrastructure and hardware-accelerated by AWS EC2 F1 FPGA, strives to be a
+            leading force in this transformative era. Experience the strength of unbreakable encryption with our live
+            demo</p>
+
     </div>
+    <br>
+    <!-- <div class="test">
+        <p class="test">LOKI</p> debugging
+    </div> -->
+    <div class="container-fluid" style="width: 90%; height: 90%; ">
+        <h1 id="algo">Used Algorithm</h1>
+        <p style="font-size: 17px;"> <span style="font-weight: bold;">NTRUEncrypt:</span> As quantum computers approach
+            the regime where Shor's algorithm can
+            efficientlys factor large integers and compute discrete logarithms, traditional cryptographic primitives
+            such
+            as RSA and ECC are rendered vulnerable. This imminent threat necessitates the exploration of post-quantum
+            cryptographic solutions, and among the contenders, NTRUEncrypt emerges prominently. NTRUEncrypt is a
+            lattice-based public key cryptosystem, underpinned by the hardness of the Ring Learning With Errors
+            (Ring-LWE) problem. Unlike factorization and discrete logarithm problems, the Ring-LWE problem does not
+            currently have an efficient quantum algorithmic solution. Within the context of FPGA F1 AWS instances, which
+            offer vast parallelization and reconfigurability, NTRUEncrypt can be optimally implemented. This not only
+            ensures high-throughput cryptographic operations but also provides a robust foundation for quantum-resistant
+            security protocols in cloud-based infrastructures.</p>
+    </div>
+    <br>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>

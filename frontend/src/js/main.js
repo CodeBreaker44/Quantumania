@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 let currentHighlightIndex = 0;
 let matchingRanges = [];
 let lastSearchedWord = null;
+// navbar scroll effect
 $(document).ready(function() {
     $(document).scroll(function() {
         let $nav = $("#navigation");
@@ -37,8 +38,8 @@ $(document).ready(function() {
         }
     });
 });
-
-
+//-----------------
+// search bar highlight
 function performSearch() {
     clearHighlight();
 
@@ -49,7 +50,7 @@ function performSearch() {
        Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Please enter a serach term',
+            text: 'Please enter a search term',
           }) 
        return;
     }
@@ -79,6 +80,7 @@ function performSearch() {
     lastSearchedWord = word;
 }
 
+// find matching ranges
 function findMatchingRanges(node, regex) {
     if (node.nodeType === 3) {
         let match;
@@ -96,7 +98,7 @@ function findMatchingRanges(node, regex) {
     }
 }
 
-
+// highlight range
 function highlightRange(range) {
     if (!range) return;
 
@@ -109,7 +111,7 @@ function highlightRange(range) {
     }
 }
 
-
+// clear highlight
 function clearHighlight() {
     let highlightedElems = document.querySelectorAll('.highlighted-text');
     highlightedElems.forEach(elem => {
@@ -120,7 +122,7 @@ function clearHighlight() {
         parent.removeChild(elem);
     });
 }
-
+// clear highlight
 document.addEventListener('click', function() {
     clearHighlight();
 });
