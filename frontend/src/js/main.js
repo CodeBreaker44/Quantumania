@@ -1,6 +1,7 @@
 // Import our custom CSS
 import '../scss/styles.scss'
 import Swal from 'sweetalert2'
+import ClientMonitor from 'skywalking-client-js';
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
 
