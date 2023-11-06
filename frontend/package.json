@@ -17,6 +17,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.2",
+    "skywalking-client-js": "^0.10.0",
     "sweetalert2": "^11.7.32"
   }
 }
