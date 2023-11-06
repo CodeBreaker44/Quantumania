@@ -7,11 +7,12 @@ import * as bootstrap from 'bootstrap'
 
 console.log("Script running");
 
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener("DOMContentLoaded", function () {
     let form = document.querySelector(".d-flex");
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
-        event.stopPropagation(); 
+        event.stopPropagation();
         performSearch();
     });
 });
@@ -21,8 +22,8 @@ let currentHighlightIndex = 0;
 let matchingRanges = [];
 let lastSearchedWord = null;
 // navbar scroll effect
-$(document).ready(function() {
-    $(document).scroll(function() {
+$(document).ready(function () {
+    $(document).scroll(function () {
         let $nav = $("#navigation");
         let scrollPosition = $(this).scrollTop();
         let navHeight = $nav.height();
@@ -39,39 +40,59 @@ $(document).ready(function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Fade in the page when it's fully loaded
+    document.body.classList.add('fade-in');
+});
+
+function fadeOut() {
+    document.body.classList.add('fade-out');
+}
+
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        const href = link.getAttribute('href');
+        fadeOut();
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500); 
+    });
+});
 //-----------------
 // search bar highlight
 function performSearch() {
     clearHighlight();
 
     let word = document.getElementById('search').value;
-    console.log("Word:", word); 
+    console.log("Word:", word);
 
     if (!word) {
-       Swal.fire({
+        Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Please enter a search term',
-          }) 
-       return;
+        })
+        return;
     }
 
     let regex = new RegExp(word, 'gi');
-    console.log("Regex:", regex);  
+    console.log("Regex:", regex);
 
     if (currentHighlightIndex === 0 || word !== lastSearchedWord) {
         matchingRanges = [];
         findMatchingRanges(document.body, regex);
     }
 
-    console.log("Number of matches:", matchingRanges.length);  
+    console.log("Number of matches:", matchingRanges.length);
 
     if (matchingRanges.length === 0) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'No match Found',
-          }) 
+        })
         return;
     }
 
@@ -86,7 +107,7 @@ function findMatchingRanges(node, regex) {
     if (node.nodeType === 3) {
         let match;
         while (match = regex.exec(node.textContent)) {
-            if (match.index === 0 || match.index + match[0].length === node.textContent.length || 
+            if (match.index === 0 || match.index + match[0].length === node.textContent.length ||
                 !/\w/.test(node.textContent[match.index - 1]) || !/\w/.test(node.textContent[match.index + match[0].length])) {
                 let range = document.createRange();
                 range.setStart(node, match.index);
@@ -124,6 +145,6 @@ function clearHighlight() {
     });
 }
 // clear highlight
-document.addEventListener('click', function() {
+document.addEventListener('click', function () {
     clearHighlight();
 });

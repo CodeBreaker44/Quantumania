@@ -1,3 +1,16 @@
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
 .navbar-toggler {
     font-size: 1.25rem;
     line-height: 1;
@@ -6,6 +19,7 @@
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
+
 .highlighted-text {
     background-color: yellow;
     display: inline;
@@ -24,10 +38,57 @@
 
 
 /* debugging */
-.test {
+/* The return of samera saed */
+.samera {
     background-color: aliceblue;
 }
+
 /*  */
 
-.nav-colored { background-color:#000; }
-.nav-transparent { background-color:transparent;}
+.nav-colored {
+    background-color: #000;
+}
+
+.nav-transparent {
+    background-color: transparent;
+}
+
+.center {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.animate-in {
+    -webkit-animation: fadeIn .4s ease-in;
+    animation: fadeIn .4s ease-in;
+}
+
+.animate-out {
+    -webkit-transition: opacity .4s;
+    transition: opacity .4s;
+    opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
