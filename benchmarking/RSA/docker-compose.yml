@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  nginx_rsa:
+    image: nginx_rsa
+    container_name: nginx-rsa
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 4433:443
