@@ -6,9 +6,60 @@ import ClientMonitor from 'skywalking-client-js';
 import * as bootstrap from 'bootstrap'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
+import { useState } from 'react';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<h1>Hello, world!</h1>);
+
+const duration = 300;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+  padding: 20,
+  display: "inline-block",
+//   backgroundColor: "#b3d0ff"
+};
+
+const transitionStyles = {
+  entering: { opacity: 0 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 1 },
+  exited: { opacity: 0 },
+};
+
+function App() {
+  const [inProp, setInProp] = useState(false);
+  return (
+    <div>
+      <button className='btn btn-primary' onClick={() => setInProp(!inProp)}>Click to Show</button>
+      <Transition in={inProp} timeout={300}>
+        {(state) => (
+          <div
+            style={{
+              ...defaultStyle,
+              ...transitionStyles[state]
+            }}
+          >
+            I'm a component that gets a Fade transition!
+          </div>
+        )}
+      </Transition>
+    </div>
+  );
+}
+
+export default function main() {
+    return(
+        <section>
+            <Transition />
+            <Transition />
+        </section>
+    
+    )}
+
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
 
 
 console.log("Script running");
