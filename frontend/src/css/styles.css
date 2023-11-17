@@ -40,7 +40,9 @@ body {
 /* debugging */
 /* The return of samera saed */
 .samera {
-    background-color: aliceblue;
+    background-color: blue;
+    width: 10000px;
+    height: 10000px;
 }
 
 /*  */
@@ -91,4 +93,24 @@ body {
     to {
         opacity: 1;
     }
+}
+
+/* 
+.reButtons {
+    position: absolute;
+    padding-left: 30%;
+    display: flex;
+} */
+
+/* .fade-in-element {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+    font-size: 150px;
+} */
+
+.fade-in-element:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+    transition: all 0.5s ease-in-out;
 }

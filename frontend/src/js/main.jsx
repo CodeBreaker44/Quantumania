@@ -8,58 +8,62 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import SplitScreen from '../components/SplitScreen.tsx';
 
 
-const duration = 300;
 
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
-  padding: 20,
-  display: "inline-block",
-//   backgroundColor: "#b3d0ff"
-};
 
-const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 1 },
-  exited: { opacity: 0 },
-};
+// function MainComponent() {
+//     const [inPropPasswords, setInPropPasswords] = useState(false);
+//     const [inPropCreditCard, setInPropCreditCard] = useState(false);
+//   return (
+//     <div>
+//       <button className='btn btn-primary' onClick={() => setInPropPasswords(!inPropPasswords)}>Passwords</button>
+//       <Transition in={inPropPasswords} timeout={300}>
+//         {(state) => (
+//           <div
+//             style={{
+//               ...defaultStyle,
+//               ...transitionStyles[state]
+//             }}
+//           >
+//             {/* a form to submit password to be encrypted  */}
+//             <form>
+//                 <div class="mb-3">
+//                     <label for="exampleInputPassword1" class="form-label">Password</label>
+//                     <input type="password" class="form-control" id="exampleInputPassword1" />
+//                 </div>
+//             </form>
+//           </div>
+//         )}
+//       </Transition>
 
-function App() {
-  const [inProp, setInProp] = useState(false);
-  return (
-    <div>
-      <button className='btn btn-primary' onClick={() => setInProp(!inProp)}>Click to Show</button>
-      <Transition in={inProp} timeout={300}>
-        {(state) => (
-          <div
-            style={{
-              ...defaultStyle,
-              ...transitionStyles[state]
-            }}
-          >
-            I'm a component that gets a Fade transition!
-          </div>
-        )}
-      </Transition>
-    </div>
-  );
-}
+//       <button className='btn btn-danger' onClick={() => setInPropCreditCard(!inPropCreditCard)}>Credit Cards </button>
+//       <Transition in={inPropCreditCard} timeout={300}>
+//         {(state) => (
+//           <div
+//             style={{
+//               ...defaultStyle,
+//               ...transitionStyles[state]
+//             }}
+//           >
+//             I am Loki of asgard and i am burdened with glorious purpose
+//           </div>
+//         )}
+//       </Transition>
+//     </div>
+//   );
+// }
 
-export default function main() {
-    return(
-        <section>
-            <Transition />
-            <Transition />
-        </section>
+
+// export default function main() {
+//     return(
+//         <section>
+//             <Transition />
+//         </section>
     
-    )}
-
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container);
-root.render(<App />);
+//     )}
 
 
 console.log("Script running");
@@ -71,7 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         event.stopPropagation();
         performSearch();
+        
     });
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<SplitScreen />);
 });
 
 
