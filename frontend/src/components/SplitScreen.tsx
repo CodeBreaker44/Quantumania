@@ -58,28 +58,30 @@ e.preventDefault();
 alert(`The name you entered was: loki`)
 }
 
-const handleNameChange = (e) => {
-  setName(e.target.value);
-}
-
-const handlePasswordChange = (e) => {
-  setPassword(e.target.value);
-}
-
-const handleCardNameChange = (e) => {
-  setCardName(e.target.value);
-}
-
-const handleCardNumberChange = (e) => {
-  setCardNumber(e.target.value);
-}
-
-const handleExpirationChange = (e) => {
-  setExpiration(e.target.value);
-}
-
-const handelSecurityCode = (e) => {
-  setSecurityCode(e.target.value);
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  switch (name) {
+    case 'name':
+      setName(value);
+      break;
+    case 'password':
+      setPassword(value);
+      break;
+    case 'cardName':
+      setCardName(value);
+      break;
+    case 'cardNumber':
+      setCardNumber(value);
+      break;
+    case 'expiration':
+      setExpiration(value);
+      break;
+    case 'securityCode':
+      setSecurityCode(value);
+      break;
+    default:
+      break;
+  } 
 }
 
 const handleSubmitRight = (e) => {
@@ -123,10 +125,10 @@ return (
                 
                 <form onSubmit={handleSubmitRight}>
                   <label htmlFor=""> User Name</label>
-                    <input type="text" placeholder="Username" className="form-control" value={name} onChange={handleNameChange}/>
+                    <input type="text" placeholder="Username" className="form-control" value={name} name="name" onChange={handleChange}/>
                     <br />
                     <label htmlFor=""> Password</label>
-                    <input type="text" placeholder="Password" className="form-control" value={password} onChange={handlePasswordChange}/>
+                    <input type="text" placeholder="Password" className="form-control" value={password} name="password" onChange={handleChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-primary'>Submit</button>
                 </form>
@@ -153,16 +155,16 @@ return (
                 {/* Form for the right side */}
                 <form onSubmit={handleSubmitLeft}>
                   <label htmlFor="">Name</label>
-                    <input type="text" placeholder="Name" className="form-control" value={cardName} onChange={handleCardNameChange}/>
+                    <input type="text" placeholder="Name" className="form-control" value={cardName} name="cardName" onChange={handleChange}/>
                     <br />
                     <label htmlFor="">Card Number</label>
-                    <input type="text" placeholder="Card Number" className="form-control" value={cardNumber} onChange={handleCardNumberChange}/>
+                    <input type="text" placeholder="Card Number" className="form-control" value={cardNumber} name="cardNumber" onChange={handleChange}/>
                     <br />
                     <label htmlFor="">Expiration (mm/yy)</label>
-                    <input type="text" placeholder="Expiration" className="form-control" value={expiration} onChange={handleExpirationChange}/>
+                    <input type="text" placeholder="Expiration" className="form-control" value={expiration} name="expiration" onChange={handleChange}/>
                     <br />
                     <label htmlFor="">Security Code </label>
-                    <input type="text" placeholder="Security Code" className="form-control" value={securityCode} onChange={handelSecurityCode}/>
+                    <input type="text" placeholder="Security Code" className="form-control" value={securityCode} name="securityCode" onChange={handleChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-success' >Submit</button>
                 </form>
