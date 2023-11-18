@@ -48,6 +48,10 @@ const [selectedSide, setSelectedSide] = useState(null);
 const [h1Visible , setH1Visible] = useState({left: true, right: true});
 const [name, setName] = useState('');
 const [password, setPassword] = useState('');
+const [cardName, setCardName] = useState('');
+const [cardNumber, setCardNumber] = useState('');
+const [expiration, setExpiration] = useState('');
+const [securityCode, setSecurityCode] = useState('');
 
 const handleSubmitLeft = (e) => {
 e.preventDefault();
@@ -60,6 +64,22 @@ const handleNameChange = (e) => {
 
 const handlePasswordChange = (e) => {
   setPassword(e.target.value);
+}
+
+const handleCardNameChange = (e) => {
+  setCardName(e.target.value);
+}
+
+const handleCardNumberChange = (e) => {
+  setCardNumber(e.target.value);
+}
+
+const handleExpirationChange = (e) => {
+  setExpiration(e.target.value);
+}
+
+const handelSecurityCode = (e) => {
+  setSecurityCode(e.target.value);
 }
 
 const handleSubmitRight = (e) => {
@@ -133,16 +153,16 @@ return (
                 {/* Form for the right side */}
                 <form onSubmit={handleSubmitLeft}>
                   <label htmlFor="">Name</label>
-                    <input type="text" placeholder="Name" className="form-control"/>
+                    <input type="text" placeholder="Name" className="form-control" value={cardName} onChange={handleCardNameChange}/>
                     <br />
                     <label htmlFor="">Card Number</label>
-                    <input type="text" placeholder="Card Number" className="form-control"/>
+                    <input type="text" placeholder="Card Number" className="form-control" value={cardNumber} onChange={handleCardNumberChange}/>
                     <br />
                     <label htmlFor="">Expiration (mm/yy)</label>
-                    <input type="text" placeholder="Expiration" className="form-control"/>
+                    <input type="text" placeholder="Expiration" className="form-control" value={expiration} onChange={handleExpirationChange}/>
                     <br />
                     <label htmlFor="">Security Code </label>
-                    <input type="text" placeholder="Security Code" className="form-control"/>
+                    <input type="text" placeholder="Security Code" className="form-control" value={securityCode} onChange={handelSecurityCode}/>
                     <br />
                     <button typeof='submit' className='btn btn-success' >Submit</button>
                 </form>
