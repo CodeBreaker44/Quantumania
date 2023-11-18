@@ -12,6 +12,9 @@ import { createRoot } from 'react-dom/client';
 import FadeIn from "react-fade-in";
 
 
+
+
+
 const duration = 300;
 
 const defaultStyle = {
@@ -43,10 +46,20 @@ function SplitScreen() {
 const [inProp, setInProp] = useState(false);
 const [selectedSide, setSelectedSide] = useState(null);
 const [h1Visible , setH1Visible] = useState({left: true, right: true});
+const [name, setName] = useState('');
+const [password, setPassword] = useState('');
 
 const handleSubmitLeft = (e) => {
 e.preventDefault();
 alert(`The name you entered was: loki`)
+}
+
+const handleNameChange = (e) => {
+  setName(e.target.value);
+}
+
+const handlePasswordChange = (e) => {
+  setPassword(e.target.value);
 }
 
 const handleSubmitRight = (e) => {
@@ -56,7 +69,7 @@ alert(`The name you entered was: loki`)
 
 const handleSideSelection = (side) => {
 
-if (selectedSide === side) resetSelection();
+if (selectedSide === side) return;
 else
 {
 setSelectedSide(side);
@@ -90,10 +103,10 @@ return (
                 
                 <form onSubmit={handleSubmitRight}>
                   <label htmlFor=""> User Name</label>
-                    <input type="text" placeholder="Username" className="form-control" />
+                    <input type="text" placeholder="Username" className="form-control" value={name} onChange={handleNameChange}/>
                     <br />
                     <label htmlFor=""> Password</label>
-                    <input type="text" placeholder="Password" className="form-control" />
+                    <input type="text" placeholder="Password" className="form-control" value={password} onChange={handlePasswordChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-primary'>Submit</button>
                 </form>
@@ -113,7 +126,7 @@ return (
           Credit Cards
         </h1>
         {selectedSide === 'right' && (
-        <Transition in={inProp} timeout={duration} onExited={resetSelection}>
+        <Transition in={inProp} timeout={duration}>
             {(state) => (
               <FadeIn>
             <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
@@ -130,6 +143,8 @@ return (
                     <br />
                     <label htmlFor="">Security Code </label>
                     <input type="text" placeholder="Security Code" className="form-control"/>
+                    <br />
+                    <button typeof='submit' className='btn btn-success' >Submit</button>
                 </form>
             </div>
             </FadeIn>
