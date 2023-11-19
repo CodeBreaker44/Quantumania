@@ -3,12 +3,15 @@ version: '3.4'
 services:
   quantumania:
     image: quantumania
+    ports:
+      - 5000:5002
     build:
       context: .
       dockerfile: ./quantumania/Dockerfile.quantumania
     depends_on:
       - db
     networks:
+      - default
       - internal
       
   nginx:
