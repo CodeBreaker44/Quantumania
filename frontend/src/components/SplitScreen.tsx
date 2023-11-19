@@ -10,7 +10,8 @@ import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from "reac
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import FadeIn from "react-fade-in";
-
+import Fade from 'react-reveal/Fade';
+import axios from 'axios';
 
 
 
@@ -53,11 +54,6 @@ const [cardNumber, setCardNumber] = useState('');
 const [expiration, setExpiration] = useState('');
 const [securityCode, setSecurityCode] = useState('');
 
-const handleSubmitLeft = (e) => {
-e.preventDefault();
-alert(`The name you entered was: loki`)
-}
-
 const handleChange = (e) => {
   const { name, value } = e.target;
   switch (name) {
@@ -84,9 +80,54 @@ const handleChange = (e) => {
   } 
 }
 
-const handleSubmitRight = (e) => {
+const handleSubmitLeft = async (e) => {
+  e.preventDefault();
+  const formData = {cardName,cardNumber,expiration,securityCode};
+  try{
+    const response = await axios.post('/api/creditcard', formData);
+    console.log(response);
+    Swal.fire({
+      title: 'Success!',
+      text: 'You have successfully logged in!',
+      icon: 'success',
+      confirmButtonText: 'Cool'
+    })
+  }
+  catch(error){
+    console.log(error);
+    Swal.fire({
+      title: 'Error!',
+      text: 'Invalid username or password!',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    })
+  }
+}
+
+const handleSubmitRight = async (e) => {
 e.preventDefault();
-alert(`The name you entered was: loki`)
+const formData = {name,password};
+console.log(formData); 
+try {
+  const response = await axios.post('/api/password', formData);
+  console.log(response);  
+    Swal.fire({
+      title: 'Success!',
+      text: 'You have successfully logged in!',
+      icon: 'success',
+      confirmButtonText: 'Cool'
+    })
+} catch (error) {
+  console.log(error);
+  
+    Swal.fire({
+      title: 'Error!',
+      text: 'Invalid username or password!',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    })
+
+}
 }
 
 const handleSideSelection = (side) => {
@@ -123,7 +164,8 @@ return (
             <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
                 {/* Form for the left side */}
                 
-                <form onSubmit={handleSubmitRight}>
+                <form id="test" onSubmit={handleSubmitRight}>
+                  <Fade bottom>
                   <label htmlFor=""> User Name</label>
                     <input type="text" placeholder="Username" className="form-control" value={name} name="name" onChange={handleChange}/>
                     <br />
@@ -131,6 +173,7 @@ return (
                     <input type="text" placeholder="Password" className="form-control" value={password} name="password" onChange={handleChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-primary'>Submit</button>
+                    </Fade>
                 </form>
                 
             </div>
@@ -154,6 +197,7 @@ return (
             <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
                 {/* Form for the right side */}
                 <form onSubmit={handleSubmitLeft}>
+                  <Fade bottom>
                   <label htmlFor="">Name</label>
                     <input type="text" placeholder="Name" className="form-control" value={cardName} name="cardName" onChange={handleChange}/>
                     <br />
@@ -167,6 +211,7 @@ return (
                     <input type="text" placeholder="Security Code" className="form-control" value={securityCode} name="securityCode" onChange={handleChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-success' >Submit</button>
+                    </Fade>
                 </form>
             </div>
             </FadeIn>

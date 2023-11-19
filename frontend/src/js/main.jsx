@@ -10,6 +10,7 @@ import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from "reac
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import SplitScreen from '../components/SplitScreen.tsx';
+import Fade from 'react-reveal/Fade';
 
 
 
@@ -216,3 +217,6 @@ function clearHighlight() {
 document.addEventListener('click', function () {
     clearHighlight();
 });
+
+var form = document.getElementById('test');
+console.log(form);

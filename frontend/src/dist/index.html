@@ -10,8 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Quantumania</title>
-  <script type="module" crossorigin src="/assets/index-ffad40e2.js"></script>
-  <link rel="stylesheet" href="/assets/index-6bad0096.css">
+  <script type="module" crossorigin src="/assets/main-c49c96c7.js"></script>
+  <link rel="stylesheet" href="/assets/main-54ed6009.css">
 </head>
 
 <style>
@@ -127,6 +127,11 @@
     <!-- <div class="test">
         <p class="test">LOKI</p> debugging
     </div> -->
+    <div class="container" id="divider">
+        <br>
+        <hr style="width: 70%; margin: auto;">
+        <br>
+    </div>
     <div class="container-fluid" style="width: 90%; height: 90%; ">
         <h1 id="algo">Used Algorithm</h1>
         <p style="font-size: 17px;"> <span style="font-weight: bold;">NTRUEncrypt:</span> As quantum computers approach
@@ -142,7 +147,21 @@
             ensures high-throughput cryptographic operations but also provides a robust foundation for quantum-resistant
             security protocols in cloud-based infrastructures.</p>
     </div>
-    <br>
+    <div class="container" id="divider">
+        <br>
+        <hr style="width: 70%; margin: auto;">
+        <br>
+    </div>
+
+    <div class="container" style="position: relative;">
+        <h3 style="text-align: center;"> Try Post-Quantum </h1>
+            <h6 style="text-align: center;"> press the button to start encryption</h4>
+                <br>
+                <!-- <span onclick="transitionToPage('/encryption.html')"></span> -->
+                <a href="../encryption.html" style="text-decoration: none; color: white;"><button type="button"
+                        class="btn btn-danger center">Try</button></a>
+    </div>
+    <div id="root" style="display: none;"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
