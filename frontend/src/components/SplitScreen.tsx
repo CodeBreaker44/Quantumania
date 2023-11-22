@@ -158,7 +158,7 @@ return ( // return the JSX for the component
           Password
         </h1>
         {selectedSide === 'left' && (
-        <Transition in={inProp} timeout={duration} onExited={resetSelection}> {/* this is the transition component that will be used to trigger the transition */}
+        <Transition in={inProp} timeout={duration} onExited={resetSelection}> 
             {(state) => (
               <FadeIn>
             <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
@@ -170,7 +170,7 @@ return ( // return the JSX for the component
                     <input type="text" placeholder="Username" className="form-control" value={name} name="name" onChange={handleChange}/>
                     <br />
                     <label htmlFor=""> Password</label>
-                    <input type="text" placeholder="Password" className="form-control" value={password} name="password" onChange={handleChange}/>
+                    <input type="password" placeholder="Password" className="form-control" value={password} name="password" onChange={handleChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-primary'>Submit</button>
                     </Fade>
@@ -205,10 +205,10 @@ return ( // return the JSX for the component
                     <input type="text" placeholder="Card Number" className="form-control" value={cardNumber} name="cardNumber" onChange={handleChange}/>
                     <br />
                     <label htmlFor="">Expiration (mm/yy)</label>
-                    <input type="text" placeholder="Expiration" className="form-control" value={expiration} name="expiration" onChange={handleChange}/>
+                    <input type="month" placeholder="Expiration" className="form-control" value={expiration} name="expiration" onChange={handleChange}/>
                     <br />
                     <label htmlFor="">Security Code </label>
-                    <input type="text" placeholder="Security Code" className="form-control" value={securityCode} name="securityCode" onChange={handleChange}/>
+                    <input type="password" placeholder="Security Code" className="form-control" value={securityCode} name="securityCode" onChange={handleChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-success' >Submit</button>
                     </Fade>
