@@ -1,5 +1,5 @@
 # on manual trigger, build backend docker image and push to dockerhub
-name: Frontend Release
+name: Backend Release
 
 on:
   push:
