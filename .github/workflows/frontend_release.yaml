@@ -1,0 +1,59 @@
+# on manual trigger, build frontend using vite and create a release
+name: Frontend Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Frontend Version to release'
+        required: true
+
+runs-on: ubuntu-latest
+
+jobs:
+  build-and-release:
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./frontend/
+
+    - name: Build with Vite
+      run: npx vite build
+      working-directory: ./frontend/
+
+    - name: Build with Vite
+      run: npx vite build
+      working-directory: ./frontend/
+
+    - name: Archive artifacts
+      run: tar -czvf frontend.tar.gz dist/
+      working-directory: ./frontend/
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version }}-frontend
+        release_name: v${{ github.event.inputs.version }}-frontend
+        draft: true
+        prerelease: false
+
+    - name: Upload dist tar as a release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./frontend/frontend.tar.gz
+        asset_name: frontend.tar.gz
+        asset_content_type: application/gzip
