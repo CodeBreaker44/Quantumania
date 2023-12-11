@@ -44,7 +44,7 @@ jobs:
       with:
         tag_name: ${{ github.event.inputs.version }}-frontend
         release_name: v${{ github.event.inputs.version }}-frontend
-        draft: true
+        draft: false
         prerelease: false
 
     - name: Upload dist tar as a release asset
