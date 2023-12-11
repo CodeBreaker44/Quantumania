@@ -8,10 +8,11 @@ on:
         description: 'Frontend Version to release'
         required: true
 
-runs-on: ubuntu-latest
+
 
 jobs:
   build-and-release:
+    runs-on: ubuntu-latest
     steps:
     - name: Check out code
       uses: actions/checkout@v4
