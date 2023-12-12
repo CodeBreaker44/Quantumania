@@ -103,7 +103,7 @@ jobs:
       name: Build and push
       uses: docker/build-push-action@v5
       with:
-        context: ./backend/nginx/Dockerfile.nginx
-        file: Dockerfile.nginx
+        context: ./backend/nginx/
+        file: ./backend/nginx/Dockerfile.nginx
         push: true
         tags: silvercryptor/quantumania-nginx:${{ github.event.inputs.version }}
