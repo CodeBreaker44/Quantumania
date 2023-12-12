@@ -107,5 +107,4 @@ jobs:
         context: ./backend/nginx/
         file: ./backend/nginx/Dockerfile.nginx
         push: true
-        tags: silvercryptor/quantumania-nginx:${{ github.event.inputs.version }}
-        build-args: 1.0.1
+        tags: silvercryptor/quantumania-nginx:latest

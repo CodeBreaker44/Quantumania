@@ -33,4 +33,4 @@ jobs:
         context: ./backend/quantumania/
         file: ./backend/quantumania/Dockerfile.quantumania
         push: true
-        tags: silvercryptor/quantumania:${{ github.sha }}
+        tags: silvercryptor/quantumania
