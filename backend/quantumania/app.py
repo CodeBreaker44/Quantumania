@@ -19,3 +19,5 @@ def password():
 def creditcard():
     data = request.get_json(force=True) 
     return str(type(data)) # returns <class 'dict'>
+
+# test commit to trigger build
