@@ -31,7 +31,7 @@ jobs:
       name: Build and push
       uses: docker/build-push-action@v5
       with:
-        context: ./backend/quantumania/Dockerfile.quantumania
+        context: ./backend/quantumania/
         file: ./backend/quantumania/Dockerfile.quantumania
         push: true
         tags: silvercryptor/quantumania:${{ github.sha }}
