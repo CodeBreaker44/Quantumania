@@ -1,10 +1,9 @@
 FROM openquantumsafe/nginx
 
-ARG TAG=1.0.1
 
 COPY ./nginx.conf /opt/nginx/nginx-conf/nginx.conf
 
-# get front-end from releases
-RUN wget https://github.com/CodeBreaker44/Quantumania/archive/refs/tags/v${TAG}-frontend.tar.gz -O /tmp/frontend.tar.gz && \
-tar -xzvf /tmp/frontend.tar.gz --strip-components=1 -C /opt/nginx/html
+# get front-end artifact from github actions
+COPY frontend.tar.gz /tmp/frontend.tar.gz
+RUN tar -xzvf /tmp/frontend.tar.gz --strip-components=1 -C /opt/nginx/html
 
