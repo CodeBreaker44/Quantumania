@@ -9,3 +9,5 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 4433:443
+    volumes:
+      - ../../frontend/src/dist:/usr/share/nginx/html

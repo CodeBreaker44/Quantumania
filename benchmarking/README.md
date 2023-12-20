@@ -20,7 +20,7 @@ docker-compose up -d
 Benchmark
 
 ```bash
-docker run --rm -it --network rsa_h2load-benchmark svagi/h2load -n 1000 -c 10 https://YOUR_IP:4433
+docker run --rm -it --network host svagi/h2load -n 1000 -c 1000 https://localhost:4433
 ```
 
 ## NGINX (liboqs)
@@ -40,7 +40,7 @@ docker-compose up -d
 Benchmark
 
 ```bash
-docker run -it --rm --network liboqs_h2load-benchmark openquantumsafe/h2load h2load -n 1000 -c 10 https://YOUR_IP
+docker run --rm -it --network host openquantumsafe/h2load h2load -n 1000 -c 1000 https://localhost:443
 ```
 
 ## NGINX (liboqs-fpga)
