@@ -22,6 +22,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fade-in": "^2.0.1",
+    "react-inputs-validation": "^4.9.10",
     "react-reveal": "^1.2.2",
     "react-transition-group": "^4.4.5",
     "skywalking-client-js": "^0.10.0",

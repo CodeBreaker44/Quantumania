@@ -12,6 +12,8 @@ import { createRoot } from 'react-dom/client';
 import FadeIn from "react-fade-in";
 import Fade from 'react-reveal/Fade';
 import axios from 'axios';
+// import { Textbox, Radiobox, Checkbox, Select, Textarea } from 'react-inputs-validation';
+// import 'react-inputs-validation/lib/react-inputs-validation.min.css';
 
 
 
@@ -88,18 +90,18 @@ const handleSubmitLeft = async (e) => { //this is the function that will be call
     console.log(response);
     Swal.fire({
       title: 'Success!',
-      text: 'You have successfully logged in!',
+      text: 'Data Sent Successfully ',
       icon: 'success',
-      confirmButtonText: 'Cool'
+      confirmButtonText: 'Okay'
     })
   }
   catch(error){
     console.log(error);
     Swal.fire({
       title: 'Error!',
-      text: 'Invalid username or password!',
+      text: 'Could not send data, check for empty fields',
       icon: 'error',
-      confirmButtonText: 'Cool'
+      confirmButtonText: 'Try again'
     })
   }
 }
@@ -113,18 +115,18 @@ try {
   console.log(response);  
     Swal.fire({
       title: 'Success!',
-      text: 'You have successfully logged in!',
+      text: 'Data Sent Successfully ',
       icon: 'success',
-      confirmButtonText: 'Cool'
+      confirmButtonText: 'Okay'
     })
 } catch (error) {
   console.log(error);
   
     Swal.fire({
       title: 'Error!',
-      text: 'Invalid username or password!',
+      text: 'Could not send data, check for empty fields',
       icon: 'error',
-      confirmButtonText: 'Cool'
+      confirmButtonText: 'Try again'
     })
 
 }
@@ -152,7 +154,7 @@ return ( // return the JSX for the component
     
     <div className="flex-grow-1 d-flex justify-content-center align-items-center" onClick={()=>
         handleSideSelection('left')}
-        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'left' ? '#FF2E63' : '#3F72AF' }}
+        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'left' ? '#3F72AF' : '#3F72AF' }}
         >
         <h1 style={{ ...h1DefaultStyle, ...(selectedSide === 'left' ? h1TransitionStyles.active : h1TransitionStyles.inactive) }}>
           Password
@@ -167,10 +169,10 @@ return ( // return the JSX for the component
                 <form id="test" onSubmit={handleSubmitRight}> {/* this is the form that will be submitted when the form is submitted */}
                   <Fade bottom>
                   <label htmlFor=""> User Name</label>
-                    <input type="text" placeholder="Username" className="form-control" value={name} name="name" onChange={handleChange}/>
+                    <input  type="text" placeholder="Username" className="form-control" value={name} name="name" onChange={handleChange}/>
                     <br />
                     <label htmlFor=""> Password</label>
-                    <input type="password" placeholder="Password" className="form-control" value={password} name="password" onChange={handleChange}/>
+                    <input  type="password" placeholder="Password" className="form-control" value={password} name="password" onChange={handleChange}/>
                     <br />
                     <button typeof='submit' className='btn btn-primary'>Submit</button>
                     </Fade>
@@ -185,7 +187,7 @@ return ( // return the JSX for the component
     
     <div className="flex-grow-1 d-flex justify-content-center align-items-center" onClick={()=>
         handleSideSelection('right')}
-        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'right' ? '#61A3BA' : '#212529' }}
+        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'right' ? '#61A3BA' : '#61A3BA' }}
         >
         <h1  className="fade-in-element" style={{ ...h1DefaultStyle, ...(selectedSide === 'right' ? h1TransitionStyles.active : h1TransitionStyles.inactive) }}>
           Credit Cards
