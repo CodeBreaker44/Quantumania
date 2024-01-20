@@ -174,7 +174,7 @@ return ( // return the JSX for the component
                     <label htmlFor=""> Password</label>
                     <input  type="password" placeholder="Password" className="form-control" value={password} name="password" onChange={handleChange}/>
                     <br />
-                    <button typeof='submit' className='btn btn-primary'>Submit</button>
+                    <button typeof='submit' className='btn btn-success'>Submit</button>
                     </Fade>
                 </form>
                 
