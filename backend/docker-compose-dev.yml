@@ -6,8 +6,8 @@ services:
     ports:
       - 5000:5002
     build:
-      context: .
-      dockerfile: ./quantumania/Dockerfile.quantumania
+      context: ./quantumania
+      dockerfile: ./Dockerfile.quantumania
     depends_on:
       - db
     networks:
