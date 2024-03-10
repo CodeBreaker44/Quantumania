@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom/client';
 import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import SplitScreen from '../components/SplitScreen.tsx';
+import App from '../components/App.jsx';
 import Fade from 'react-reveal/Fade';
 
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     const container = document.getElementById('root');
     const root = ReactDOM.createRoot(container);
-    root.render(<SplitScreen />);
+    root.render(<App/>);
 });
 
 

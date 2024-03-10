@@ -48,13 +48,14 @@ const h1TransitionStyles = {
 function SplitScreen() { // this is the component that will be exported
 const [inProp, setInProp] = useState(false); // this is the state variable that will be used to trigger the transition
 const [selectedSide, setSelectedSide] = useState(null); // this is the state variable that will be used to determine which side is selected
-const [h1Visible , setH1Visible] = useState({left: true, right: true}); // this is the state variable that will be used to determine which h1 is visible
+const [h1Visible , setH1Visible] = useState({left: true, right: true, center: true}); // this is the state variable that will be used to determine which h1 is visible
 const [name, setName] = useState(''); // this is the state variable that will be used to store the username
 const [password, setPassword] = useState('');  // this is the state variable that will be used to store the password
 const [cardName, setCardName] = useState(''); // this is the state variable that will be used to store the card name
 const [cardNumber, setCardNumber] = useState(''); // this is the state variable that will be used to store the card number
 const [expiration, setExpiration] = useState(''); // this is the state variable that will be used to store the expiration date
-const [securityCode, setSecurityCode] = useState(''); // this is the state variable that will be used to store the security code
+const [securityCode, setSecurityCode] = useState(''); // this is the state variable that will be used to store the security code\
+const [image, setImage] = useState([]);
 
 const handleChange = (e) => { // e is the event object passed from the input field
   const { name, value } = e.target; // destructuring the name and value from the target object
@@ -132,6 +133,64 @@ try {
 }
 }
 
+const handleSubmitCenter = async (e) => {
+  e.preventDefault(); 
+
+ 
+  const fileInput = document.getElementById('formFile') as HTMLInputElement;
+
+
+  if (fileInput && fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0]; 
+
+   
+      const reader = new FileReader();
+
+      reader.onloadend = async () => {
+          
+          const base64String = reader.result as string;
+
+          
+          const formData = { image: base64String };
+
+          try {
+              const response = await axios.post('/api/images', formData, {
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              });
+              console.log(response);
+
+              Swal.fire({
+                  title: 'Success!',
+                  text: 'Data Sent Successfully ',
+                  icon: 'success',
+                  confirmButtonText: 'Okay'
+              });
+          } catch (error) {
+              console.error(error);
+
+              Swal.fire({
+                  title: 'Error!',
+                  text: 'Could not send data, check for empty fields',
+                  icon: 'error',
+                  confirmButtonText: 'Try again'
+              });
+          }
+      };
+
+      reader.readAsDataURL(file); 
+  } else {
+   
+      Swal.fire({
+          title: 'Error!',
+          text: 'Please select a file to upload or check if file input exists',
+          icon: 'error',
+          confirmButtonText: 'Try again'
+      });
+  }
+};
+
 const handleSideSelection = (side) => { // this function will be called when a side is selected
 
 if (selectedSide === side) return;
@@ -146,7 +205,7 @@ setH1Visible(prev => ({ ...prev, [side]: true })); // set the h1Visible to true 
 const resetSelection = () => { // this function will be called when the transition is complete
   setSelectedSide(null);
   setInProp(false);
-  setH1Visible({ left: true, right: true });
+  setH1Visible({ left: true, right: true,center: true });
 };
 
 return ( // return the JSX for the component
@@ -178,6 +237,36 @@ return ( // return the JSX for the component
                     </Fade>
                 </form>
                 
+            </div>
+            </FadeIn>
+            )}
+        </Transition>
+        )}
+    </div>
+    <div className="flex-grow-1 d-flex justify-content-center align-items-center" onClick={()=>
+        handleSideSelection('center')}
+        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'center' ? '#FBA834' : '#FBA834' }}
+        >
+        <h1 style={{ ...h1DefaultStyle, ...(selectedSide === 'center' ? h1TransitionStyles.active : h1TransitionStyles.inactive) }}>
+          Images
+        </h1>
+        {selectedSide === 'center' && (
+        <Transition in={inProp} timeout={duration} onExited={resetSelection}> 
+            {(state) => (
+              <FadeIn>
+            <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
+                {/* Form for the center side */}
+                <form id="test" onSubmit={handleSubmitCenter}>
+                <Fade bottom>
+                <div className="mb-3">
+                    <label htmlFor="formFile" className="form-label">
+                      Choose an Image
+                    </label>
+                    <input className="form-control" type="file" id="formFile" />
+                  </div>
+                  <button typeof='submit' className='btn btn-success'>Submit</button>
+                  </Fade>
+                  </form>
             </div>
             </FadeIn>
             )}

@@ -20,3 +20,7 @@ def creditcard():
     data = request.get_json(force=True) 
     return str(type(data)) # returns <class 'dict'>
 
+@app.route('/api/images', methods=['POST']) #route to the creditcard api
+def images():
+    data = request.get_json(force=True) 
+    return str(type(data))
