@@ -8,7 +8,7 @@ RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 && \
     openssl x509 -req -days 365 -in server.csr -signkey /nginx-selfsigned.key -out /nginx-selfsigned.crt
 
 
-FROM nginx:latest
+FROM nginx:1.25.2
 
 COPY --from=key_generator /nginx-selfsigned.crt /etc/nginx/ssl/nginx-selfsigned.crt
 COPY --from=key_generator /nginx-selfsigned.key /etc/nginx/ssl/nginx-selfsigned.key
