@@ -243,40 +243,11 @@ return ( // return the JSX for the component
         </Transition>
         )}
     </div>
-    <div className="flex-grow-1 d-flex justify-content-center align-items-center" onClick={()=>
-        handleSideSelection('center')}
-        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'center' ? '#FBA834' : '#FBA834' }}
-        >
-        <h1 style={{ ...h1DefaultStyle, ...(selectedSide === 'center' ? h1TransitionStyles.active : h1TransitionStyles.inactive) }}>
-          Images
-        </h1>
-        {selectedSide === 'center' && (
-        <Transition in={inProp} timeout={duration} onExited={resetSelection}> 
-            {(state) => (
-              <FadeIn>
-            <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
-                {/* Form for the center side */}
-                <form id="test" onSubmit={handleSubmitCenter}>
-                <Fade bottom>
-                <div className="mb-3">
-                    <label htmlFor="formFile" className="form-label">
-                      Choose an Image
-                    </label>
-                    <input className="form-control" type="file" id="formFile" />
-                  </div>
-                  <button typeof='submit' className='btn btn-success'>Submit</button>
-                  </Fade>
-                  </form>
-            </div>
-            </FadeIn>
-            )}
-        </Transition>
-        )}
-    </div>
+
     
     <div className="flex-grow-1 d-flex justify-content-center align-items-center" onClick={()=>
         handleSideSelection('right')}
-        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'right' ? '#61A3BA' : '#61A3BA' }}
+        style={{ cursor: 'pointer', backgroundColor: selectedSide === 'right' ? '#FBA834' : '#FBA834' }}
         >
         <h1  className="fade-in-element" style={{ ...h1DefaultStyle, ...(selectedSide === 'right' ? h1TransitionStyles.active : h1TransitionStyles.inactive) }}>
           Credit Cards
