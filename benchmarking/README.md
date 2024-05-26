@@ -20,7 +20,7 @@ docker-compose up -d
 Benchmark
 
 ```bash
-docker run --rm -it --network host svagi/h2load -n 1000 -c 1000 https://localhost:4433
+docker run --rm -it --network host openquantumsafe/h2load h2load -n 1000 -c 1000 https://localhost:4433
 ```
 
 ## NGINX (liboqs)
@@ -47,20 +47,4 @@ docker run --rm -it --network host openquantumsafe/h2load h2load -n 1000 -c 1000
 
 This is a modified nginx server that uses liboqs for TLS/SSL handshake. It uses hardware acceleration using FPGA.
 
-- check `liboqs/docker-compose.yml` for how it was deployed.
-
-with a shell inside `liboqs-fpga` directory
-
-### Deploy
-
-```bash
-docker-compose up -d
-```
-
-### Benchmark
-
-```bash
-docker run -it --rm --network liboqs_fpga_h2load-benchmark openquantumsafe/h2load h2load -n 1000 -c 10 https://YOUR_IP:4432
-```
-
-I will merge all these docker compose files into one for easier comparison.
+TO DO
